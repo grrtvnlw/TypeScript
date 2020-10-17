@@ -86,4 +86,53 @@ let add2: (numOne: number, numTwo: number) => number = (numOne, numTwo) => { ret
 
 let add2 = (numOne: number, numTwo: number) => { return numOne + numTwo };
 
+// Union: pipe means age can be a string or number here
+let age: string | number;
+age = 'Ten';
+age = 20;
 
+let formInput: string | null;
+
+interface Teacher {
+  subject: string
+}
+
+interface CollegeFaculty {
+  college: string
+}
+
+interface Workshop {
+  number: string;
+  durationInHours: number;
+  subject: string;
+  description: string;
+  participantCount: number;
+}
+
+// Intersection: professor needs both types
+let professor: Teacher & CollegeFaculty = {
+  subject: 'calculus',
+  college: 'College of Math'
+}
+
+// creating your own type
+type durationInHours = number | string;
+
+let mathClassDuration: durationInHours = 9;
+
+
+class Pet {
+  name: string; 
+  owner: string;
+  
+  constructor(name: string, owner: string) {
+    this.name = name;
+    this.owner = owner;
+  }
+
+  returnOwner() {
+    return this.owner;
+  }
+}
+
+new Pet('Spot', 'Gerrit');
