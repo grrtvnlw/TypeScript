@@ -77,9 +77,19 @@ function add(x: number, y: number): number {
 }
 
 // attempting to overload function --add functionality vs. overwrite
-function add(x: string, y: string): string {
-  return x + y;
+class Adder {
+  addValues(x: string, y: string): number;
+
+  addValues(x: string, y:string): string;
+
+  addValues(x: any, y: any): any {
+    return x + y;
+  }
 }
+
+let adder: Adder = new Adder();
+
+console.log(adder.addValues('3', '4'));
 
 // anonymous function, type of variable is function signature
 let add2: (numOne: number, numTwo: number) => number = (numOne, numTwo) => { return numOne + numTwo };

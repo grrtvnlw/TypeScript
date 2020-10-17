@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactElement, useState } from "react";
+import "./App.css";
+import Header from "./Components/Header/Header";
+import Catalog from "./Components/Catalog/Catalog";
+import Cart from "./Components/Cart/Cart";
+import ProductData from "./Interfaces/ProductData";
+import CartItemDetail from "./Interfaces/CartItemDetail";
 
-function App() {
+function App(): ReactElement {
+  const [addedProducts, setAddedProducts] = useState<
+    Map<number, CartItemDetail>
+  >(new Map());
+
+  function addedProductsUpdated(product: ProductData): void {
+    const cartProductRow: CartItemDetail = {
+      productData: product,
+      quantity: 1,
+    };
+
+    const newProducts = new Map<number, CartItemDetail>();
+    newProducts.set(cartProductRow.productData.id, cartProductRow);
+
+    setAddedProducts(newProducts);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Catalog onAddedProductsUpdate={addedProductsUpdated} />
+      <Cart addedProducts={addedProducts} />
     </div>
   );
 }
