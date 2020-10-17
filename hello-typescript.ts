@@ -1,0 +1,89 @@
+const sayHello = (name: string) => {
+  console.log(name + ", Hello World! ");
+};
+
+// sayHello("Gerrit");
+
+const myString: string = "This is a string";
+
+let isTrue: boolean = false;
+
+let maxValue: number = 90;
+
+let decimalValue: number = 100.00;
+
+let hexValue: number = 0xf00d;
+
+let binaryValue: number = 0b1010;
+
+let octalValue: number = 0o744;
+
+// let bigIntValue: bigint = 100n;
+
+let username: string = 'Sally';
+
+let numArray: number[] = [1, 2, 4];
+let numArray2: Array<number> = [1, 2, 4];
+
+let isCheckedIn: [boolean, string] = [true, 'Sally']
+
+console.log(isCheckedIn[0])
+console.log(isCheckedIn[1])
+
+enum Season {
+  Spring = 'Spring',
+  Summer = 'Summer',
+  Fall = 'Fall',
+  Winter = 'Winter'
+}
+
+console.log(Season.Summer);
+
+let groceryMap: Map<string, number> = new Map<string, number>(); // constructor to instantiate
+
+groceryMap.set('apple', 3);
+groceryMap.set('orange', 2);
+console.log(groceryMap.get('apple'));
+groceryMap.delete('apple');
+console.log(groceryMap);
+
+let grocerySet: Set<string> = new Set<string>(); // constructor to instantiate
+grocerySet.add('apple');
+grocerySet.add('orange');
+console.log(grocerySet);
+
+let myValue: any = 4;
+let actuallyNumber: number = myValue as number;
+// myValue = 'Four';
+
+let unknown: unknown = 4;
+unknown = 'try';
+
+function someFunction(): void {
+  console.log('I don\'t return anything');
+}
+
+function someOtherFunction(): never {
+  throw new Error('Doesn\'t return');
+}
+
+let unsetVar: null = null;
+
+let anotherVar: undefined;
+
+// named function
+function add(x: number, y: number): number {
+  return x + y;
+}
+
+// attempting to overload function --add functionality vs. overwrite
+function add(x: string, y: string): string {
+  return x + y;
+}
+
+// anonymous function, type of variable is function signature
+let add2: (numOne: number, numTwo: number) => number = (numOne, numTwo) => { return numOne + numTwo };
+
+let add2 = (numOne: number, numTwo: number) => { return numOne + numTwo };
+
+
